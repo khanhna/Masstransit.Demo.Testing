@@ -50,6 +50,9 @@ namespace Library.Components.Tests
                 var nvc = new NameValueCollection { ["quartz.scheduler.instanceName"] = Guid.NewGuid().ToString() };
                 ISchedulerFactory schedulerFactory = new StdSchedulerFactory(nvc);
                 configurator.UseInMemoryScheduler(schedulerFactory, out _scheduler);
+                
+                // Use only this cause Exception: Scheduler with name 'DefaultQuartzScheduler' already exists!
+                //configurator.UseInMemoryScheduler(out _scheduler);
             };
             await TestHarness.Start();
 
