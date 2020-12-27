@@ -1,5 +1,4 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Library.Components.StateMachines;
 using Library.Contract;
 using MassTransit;
@@ -8,14 +7,14 @@ using MassTransit.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
+using System;
 using System.Threading.Tasks;
-using MassTransit.Logging;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Library.Components.Tests
 {
-    public class When_A_Reservation_Is_Added : 
+    public class When_A_Reservation_Is_Added :
         StateMachineTestFixture<ReservationStateMachine, ReservationSagaState>,
         IClassFixture<StateMachineTestFixture<ReservationStateMachine, ReservationSagaState>>
     {
@@ -28,7 +27,6 @@ namespace Library.Components.Tests
                 .ForContext<When_A_Book_Is_Added>();
 
             ConfigureLogging(Output);
-            Output.Debug($"Initialize value : {initializeCounter}");
         }
 
         [Fact]
@@ -75,7 +73,6 @@ namespace Library.Components.Tests
                 .ForContext<When_A_Book_Is_Added>();
 
             ConfigureLogging(Output);
-            Output.Debug($"Initialize value : {initializeCounter}");
         }
 
         protected override void ConfigureMassTransit(IServiceCollectionBusConfigurator configurator)
@@ -129,7 +126,7 @@ namespace Library.Components.Tests
         }
     }
 
-    public class When_A_Reservation_Expired : 
+    public class When_A_Reservation_Expired :
         StateMachineTestFixture<ReservationStateMachine, ReservationSagaState>,
         IClassFixture<StateMachineTestFixture<ReservationStateMachine, ReservationSagaState>>
     {
@@ -145,7 +142,6 @@ namespace Library.Components.Tests
                 .ForContext<When_A_Book_Is_Added>();
 
             ConfigureLogging(Output);
-            Output.Debug($"Initialize value : {initializeCounter}");
         }
 
         protected override void ConfigureMassTransit(IServiceCollectionBusConfigurator configurator)
